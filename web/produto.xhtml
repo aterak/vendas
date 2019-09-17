@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./template.xhtml">
+
+            <ui:define name="top">
+              
+            </ui:define>
+
+            <ui:define name="content">
+
+
+                <center>
+                    Cadastro de produto
+
+
+                    <f:view>
+
+
+                        <h:form>
+                            <h1><h:outputText value="Create/Edit"/></h1>
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Idproduto:" for="idproduto" />
+                                <h:inputText id="idproduto" value="#{produtoBean.produtoBean.idproduto}" title="Idproduto" required="true" requiredMessage="The Idproduto field is required."/>
+                                <h:outputLabel value="Nome:" for="nome" />
+                                <h:inputText id="nome" value="#{produtoBean.produtoBean.nome}" title="Nome" />
+                                <h:outputLabel value="Valor:" for="valor" />
+                                <h:inputText id="valor" value="#{produtoBean.produtoBean.valor}" title="Valor" />
+                            </h:panelGrid>
+                        </h:form>
+                    </f:view>
+
+
+                    <f:view>
+
+
+                        <h:form>
+                            <h1><h:outputText value="List"/></h1>
+                            <h:dataTable value="#{produtoBean.listaProdutobean}" var="item" border="1">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Idproduto"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.idproduto}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Nome"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.nome}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Valor"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.valor}"/>
+                                
+                                    <h:commandButton value="verifica codigo" action="#{produtoBean.verificaProdutoID(codigo)}"/>
+                                
+                                </h:column>
+                            </h:dataTable>
+                            
+                                
+                            
+                            
+                        </h:form>
+                    </f:view>
+                    <h:form>
+                        
+                        <h:inputText value="#{produtoBean.produtoBean.idproduto}"/>
+                        <h:commandButton value="verifica codigo" action="#{produtoBean.verificaProdutoID(codigo)}"/>
+                               
+                    </h:form>
+
+                </center>
+
+                
+               
+
+
+               
+                
+                
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

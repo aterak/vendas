@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./template.xhtml">
+
+            <ui:define name="top">
+                top
+            </ui:define>
+
+            <ui:define name="content">
+               
+                
+                
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="IdprevisaoVenda:" for="idprevisaoVenda" />
+                            <h:inputText id="idprevisaoVenda" value="#{registraOK.produtos.idproduto}" title="IdprevisaoVenda" required="true" requiredMessage="The IdprevisaoVenda field is required."/>
+                            <h:outputLabel value="Total:" for="total" />
+                            <h:inputText id="total" value="#{registraOK.produtos.nome}" title="Total" />
+                            <h:outputLabel value="NomeUsuario:" for="nomeUsuario" />
+                            <h:inputText id="nomeUsuario" value="#{registraOK.produtos.valor}" title="NomeUsuario" />
+                            <h:outputLabel value="NomeProduto:" for="nomeProduto" />
+                            <h:inputText id="nomeProduto" value="#" title="NomeProduto" />
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
+
+                
+                
+                
+                
+                
+               <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="IdprevisaoVenda:" for="idprevisaoVenda" />
+                            <h:outputText value="id" />
+                            <h:inputText id="nomeUsuario" value="#{usuarioBean.usuarioBean.idusuario}" title="NomeUsuario" />
+                            <h:commandButton value="saber" action="#{usuarioBean.verificaLogin()}"/>
+                        </h:panelGrid>
+                    </h:form> 
+                
+                
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./template.xhtml">
+
+            <ui:define name="top">
+                top
+            </ui:define>
+
+            <ui:define name="content">
+
+
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Usuario" for="idproduto" />
+                            <h:selectOneMenu value="#{registraVendaBean.usuarioSelecionado}">
+                                <f:selectItem itemLabel="Selecione um Cliente"/>
+                                <f:selectItems value="#{registraVendaBean.usuarioSelect}"/>
+                                <f:ajax event="change" render="idselect"/> 
+                            </h:selectOneMenu>
+
+                            <h:outputLabel value="Produto"/>
+                            <h:inputText value="#{registraVendaBean.produtoSelecionado.nome}"/>
+                            <h:commandButton value="Pesquisar Produto" action="#{registraVendaBean.buscarProduto}"/>
+
+                            <h:outputText id="idselect"  value="#{registraVendaBean.usuarioSelecionado.idusuario}"/>                    
+                        </h:panelGrid>
+                    </h:form>
+                </f:view>
+
+                
+                
+                
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="List"/></h1>
+                        <h:dataTable value="#{registraVendaBean.buscarProduto}" var="item">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Idproduto"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idproduto}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nome"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nome}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Valor"/>
+                                </f:facet>
+                                <h:outputText value="#{item.valor}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </f:view>
+
+                
+                
+
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

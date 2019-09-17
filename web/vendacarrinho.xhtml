@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./template.xhtml">
+
+            <ui:define name="top">
+                top
+             
+            </ui:define>
+
+            <ui:define name="content">
+               
+                
+                <f:view>
+
+                    <center>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Lista de Produtos"/></h1>
+                        <h:dataTable value="#{registraOK.listaProdutosBean}" var="item" border="1">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Idp"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idproduto}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="nome"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nome}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="valor"/>
+                                </f:facet>
+                                <h:outputText value="#{item.valor}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="ação"/>
+                                </f:facet>
+                                <h:commandButton value="salvar" action="#{registraOK.carregarCarrinoPrevVendaID(u)}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+
+                    
+                    
+                    
+                    
+                    
+                    <h:form>
+                        <h1><h:outputText value="Lista das vendas"/></h1>
+                        <h:dataTable value="#{registraOK.listavenda}" var="item2" border="1">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdprevisaoVenda"/>
+                                </f:facet>
+                                <h:outputText value="#{item2.nomeProduto}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Total"/>
+                                </f:facet>
+                                <h:outputText value="#{item2.idprevisaoVenda}"/>
+                            </h:column>
+                            
+                                  
+                        </h:dataTable>
+                    </h:form>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                   
+                </center>
+                </f:view>
+
+            
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

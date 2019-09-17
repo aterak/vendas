@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./template.xhtml">
+
+            <ui:define name="top">
+            
+            </ui:define>
+
+            <ui:define name="content">
+                
+               
+                   <center>
+               
+                     
+                      Cadastro de usuario
+                       
+                       
+                       
+                       <f:view>
+
+
+                           <h:form>
+                               <h1><h:outputText value="Create/Edit"/></h1>
+                               <h:panelGrid columns="2">
+                                   <h:outputLabel value="Nome:" for="nome" />
+                                   <h:inputText id="nome" value="#{usuarioBean.usuarioBean.nome}" title="Nome" />
+                                   <h:outputLabel value="DataCadastro:" for="dataCadastro" />
+                                   <h:inputText id="dataCadastro" value="#{usuarioBean.usuarioBean.dataCadastro}" title="DataCadastro" >
+                                       <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                   </h:inputText>
+                                   <h:outputLabel value="DataNascimento:" for="dataNascimento" />
+                                   <h:inputText id="dataNascimento" value="#{usuarioBean.usuarioBean.dataNascimento}" title="DataNascimento" >
+                                       <f:convertDateTime pattern="MM/dd/yyyy" />
+                                   </h:inputText>
+                                   <h:outputLabel value="Senha:" for="senha" />
+                                   <h:inputText id="senha" value="#{usuarioBean.usuarioBean.senha}" title="Senha" />
+                               </h:panelGrid>
+                           
+                           
+                               <h:commandButton value="salvar" action="#{usuarioBean.salvarUsuario(actionEvent)}"/>
+                           
+                           </h:form>
+                       </f:view>
+
+                       
+                       
+                       
+                       
+                       <f:view>
+
+               
+                    <h:form>
+                        <h1><h:outputText value="List"/></h1>
+                        <h:dataTable value="#{usuarioBean.listaUsuariobean}" var="item" border="1">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Idusuario"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idusuario}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nome"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nome}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="DataCadastro"/>
+                                </f:facet>
+                                <h:outputText value="#{item.dataCadastro}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="DataNascimento"/>
+                                </f:facet>
+                                <h:outputText value="#{item.dataNascimento}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Senha"/>
+                                </f:facet>
+                                <h:outputText value="#{item.senha}"/>
+                                <h:commandButton value="excluir" action="#{usuarioBean.apagarUsuario(item)}" onclick="if(!confirm('Deseja excluir o Usuario  :  #{usuarioBean.usuarioBean.nome}?'))return false;" />
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+             
+                
+                </f:view>
+
+                 </center>
+                
+            </ui:define>
+
+            <ui:define name="bottom">
+                meu rodape da index
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./template.xhtml">
+
+            <ui:define name="top">
+
+            </ui:define>
+
+            <ui:define name="content">
+                <f:view>
+                    <center>
+                        <h:form>
+                            <h1><h:outputText value="Create/Edit"/></h1>
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Usuario" for="idproduto" />
+                                <h:selectOneMenu value="#{registraVendatesteBean.usuarioSelecionado}">
+                                    <f:selectItem itemLabel="Selecione um Cliente"/>
+                                    <f:selectItems value="#{registraVendatesteBean.usuarioSelect}"/>
+                                    <f:ajax event="change" render="idUsuarioSelecionado"/>
+                                </h:selectOneMenu>
+
+                                
+                                
+                                <h:panelGroup>
+                                <h:outputLabel value="Id do Usuario"/>
+                               
+                                <h:outputText id="idUsuarioSelecionado" value="#{registraVendatesteBean.usuarioSelecionado.idusuario}"/>
+
+                                </h:panelGroup>
+
+
+
+
+
+
+
+                            </h:panelGrid>
+
+                            <h:dataTable value="#{registraVendatesteBean.listaProd}" var="car" border="1">
+
+                               
+
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="nome"/>
+                                    </f:facet>
+                                    <h:outputText value="#{car.nome}"/>
+                                </h:column>
+                               
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="valor"/>
+
+                                    </f:facet>
+                                    <h:commandButton value="Incluir no carrinho de vendas" action="#{registraVendatesteBean.salvarVendaBe}"/>
+
+                                </h:column>
+
+
+
+
+
+
+
+                            </h:dataTable>
+
+
+
+
+
+
+
+                            <h:dataTable value="#{registraVendatesteBean.carroCompra}"    var="carrinhodobanco" border="1"  >
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="id"/>
+                                    </f:facet>
+                                    <h:outputText value="#{carrinhodobanco.idprevisaoVenda}"/>
+                                </h:column>
+ <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="produto"/>
+                                    </f:facet>
+     <h:outputText value="#{carrinhodobanco.nomeProduto}"/>
+                                </h:column>
+                                 <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="usuario"/>
+                                    </f:facet>
+                                     <h:outputText value="#{carrinhodobanco.nomeUsuario}"/>
+                                </h:column>
+                                 <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="total"/>
+                                    </f:facet>
+                                     <h:outputText value="#{carrinhodobanco.total}"/>
+                                </h:column>
+                            </h:dataTable>
+
+
+
+
+
+
+
+
+                        </h:form>
+
+                    </center>
+
+
+
+                </f:view>
+
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
